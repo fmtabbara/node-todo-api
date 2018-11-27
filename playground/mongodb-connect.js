@@ -10,33 +10,33 @@ MongoClient.connect(
     console.log('Connected to the MongoDB server');
     const db = client.db('TodoApp');
 
-    // db.collection('Todos').insertOne(
-    //   {
-    //     text: 'Something to do',
-    //     completed: false
-    //   },
-    //   (err, res) => {
-    //     if (err) {
-    //       return console.log('Unable to insert todo', err);
-    //     }
-
-    //     console.log(JSON.stringify(res, undefined, 2));
-    //   }
-    // );
-
-    db.collection('Users').insertOne(
+    db.collection('Todos').insertOne(
       {
-        name: 'Fluff',
-        age: 8,
-        location: 'Dreamland'
+        text: 'Eat lunch',
+        completed: false
       },
       (err, res) => {
         if (err) {
-          return console.log('There was an error');
+          return console.log('Unable to insert todo', err);
         }
-        console.log('User successfully added', res.ops);
+
+        console.log(JSON.stringify(res.ops, undefined, 2));
       }
     );
+
+    // db.collection('Users').insertOne(
+    //   {
+    //     name: 'Fluff',
+    //     age: 8,
+    //     location: 'Dreamland'
+    //   },
+    //   (err, res) => {
+    //     if (err) {
+    //       return console.log('There was an error');
+    //     }
+    //     console.log('User successfully added', res.ops);
+    //   }
+    // );
     client.close();
   }
 );
