@@ -22,8 +22,10 @@ app.post('/todos', (req, res) => {
     doc => {
       res.send(doc);
     },
-    err => res.send(err)
+    err => res.status(400).send(err)
   );
 });
 
 app.listen(3000, () => console.log('Server started on PORT: 3000'));
+
+module.exports = { app };
