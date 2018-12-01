@@ -6,6 +6,7 @@ const { Todo } = require('./models/Todo');
 const { User } = require('./models/User');
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -57,6 +58,6 @@ app.get('/todos/:id', (req, res) => {
     .catch(err => res.status(400).send({}));
 });
 
-app.listen(3000, () => console.log('Server started on PORT: 3000'));
+app.listen(PORT, () => console.log(`Server started on PORT: ${PORT}`));
 
 module.exports = { app };
