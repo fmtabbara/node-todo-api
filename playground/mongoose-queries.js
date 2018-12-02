@@ -2,8 +2,7 @@ const { mogoose } = require('./../server/db/mongoose');
 const { Todo } = require('./../server/models/todo');
 const { User } = require('./../server/models/User');
 const { ObjectID } = require('mongodb');
-const id = '5bff0f3cde6694394ccbfd2c';
-const userId = '5bfdcc7f3a7a3f1a5cf525e111';
+const id = '5c02f38bc5bd9918b43adf18';
 
 if (!ObjectID.isValid(id)) {
   return console.log('ID not valid');
@@ -26,7 +25,7 @@ if (!ObjectID.isValid(id)) {
 //   console.log('Todo by ID:', res);
 // });
 
-User.findById(userId)
+Todo.findById(id)
   .then(user => {
     if (!user) {
       return console.log('user does not exist');
