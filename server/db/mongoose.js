@@ -8,7 +8,7 @@ let db;
 if (process.env.NODE_ENV === 'development') {
   MONGOURI = 'mongodb://localhost:27017/TodoApp';
   db = 'Local';
-} else if (process.env.NODE_ENV === 'production') {
+} else {
   MONGOURI = 'mongodb://Fouad:todolist1@ds141284.mlab.com:41284/todolist';
   db = 'Cloud';
 }
