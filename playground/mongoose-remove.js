@@ -7,6 +7,8 @@ const { ObjectID } = require('mongodb');
 //   console.log(res)
 // })
 
+console.log(process.env);
+
 Todo.findByIdAndRemove('5c02f38bc5bd9918b43adf18').then(res => {
   console.log(res);
 });
