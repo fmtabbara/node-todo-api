@@ -1,19 +1,25 @@
-const config = require('./config.json');
-
 const configEnv = () => {
   let MONGOURI;
+  let JWT_SECRET;
   let db;
-  const JWT_SECRET = "JWT_SECRET"
-  const env = process.env.NODE_ENV || 'production';
-  const envConfig = config[env];
 
-  if (env === 'development') {
-    process.env[JWT_SECRET] = envConfig[JWT_SECRET]
+  const env = process.env.NODE_ENV || 'production';
+
+  if (env === 'test') {
+    const config = require('./config.json');
+    var envConfig = config[env];
+    process.env.JWT_SECRET = envConfig.JWT_SECRET;
+    MONGOURI = envConfig.MONGOURI;
+    db = 'Local';
+  } else if (env === 'development') {
+    const config = require('./config.json');
+    var envConfig = config[env];
+    process.env.JWT_SECRET = envConfig.JWT_SECRET;
     MONGOURI = envConfig.MONGOURI;
     db = 'Local';
   } else {
-    process.env[JWT_SECRET] = envConfig[JWT_SECRET]
-    MONGOURI = envConfig.MONGOURI;
+    JWT_SECRET = process.env.JWT_SECRET;
+    MONGOURI = process.env.MONGOURI;
     db = 'Cloud';
   }
 
