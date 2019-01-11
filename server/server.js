@@ -16,6 +16,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
+app.get('/', (req, res) => {
+  res.send('Welcome to the app...');
+});
+
 app.post('/todos', authenticate, (req, res) => {
   const newTodo = new Todo({
     text: req.body.text,
